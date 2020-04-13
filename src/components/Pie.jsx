@@ -1,20 +1,20 @@
 import React, { useState } from 'react'
 import { Pie as PieChart } from 'react-chartjs-2';
+import { Resumen } from "./Resumen";
 
 
-export const Pie = ({ data, backgroundColor }) => {
-
-    const [select, setSelect] = useState('Cliente');
-
+export const Pie = ({ data, assignment, backgroundColor }) => {
+        
     const dataset = [];
-    const assignments = data.map(el => el.assignment).filter((el, i, a) => a.indexOf(el) === i);
-    const week = data.filter((el) => el.assignment === select).map(el => el.week).reduce((a, b) => a > b ? a : b, 0);
-    const projects = data.filter((el) => el.assignment === select && el.week === week).map(el => el.project).filter((el, i, a) => a.indexOf(el) === i);
-
+    const week = data.filter((el) => el.assignment === assignment).map(el => el.week).reduce((a, b) => a > b ? a : b, 0);
+    const projects = data.filter((el) => el.assignment === assignment && el.week === week).map(el => el.project).filter((el, i, a) => a.indexOf(el) === i);
     projects.forEach((project, i) => {
-        let hour = data.filter((el) => el.assignment === select && el.week === week && el.project === project).map(el => el.hours).reduce((a, b) => a + b, 0);
-        dataset.push({ project, hour, backgroundColor: backgroundColor.slice(i, i + 1) });
+        let object = data.filter((el) => el.assignment === assignment && el.week === week && el.project === project);
+        let hour = object.map(el => el.hours).reduce((a, b) => a + b, 0);
+        let customer = object.map(el => el.customer).filter((el, i, a) => a.indexOf(el) === i)[0];
+        dataset.push({ customer, project, hour, backgroundColor: backgroundColor.slice(i, i + 1) });
     });
+
 
     const dataPie = {
         labels: dataset.map(p => p.project),
@@ -32,15 +32,10 @@ export const Pie = ({ data, backgroundColor }) => {
         }
     };
 
-    const assignment = [];
-    assignments.map((item) => {
-        assignment.push(<option key={item} value={item}> {item}</option>);
-    });
-
     return (
         <div>
-            <select onChange={ (e) => setSelect(e.target.value) } >{assignment} </select>
             <PieChart data={dataPie} options={options} />
+            <Resumen data={dataset} />
         </div>
     );
 

@@ -11,3 +11,46 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.content {
+  display: flex;
+  padding: 10px;
+}
+
+.table {
+  display: table;
+  width: 100%;
+  padding: 5px 10px;
+}
+
+.theader {
+  display: table-header-group;
+  font-weight: bold;
+  background-color: rgb(242, 242, 242);
+  padding: 20px 20px;
+  font-size: 18px;
+}
+
+.tbody {
+  display: table-row-group;
+  font-size: 14px;
+
+}
+
+.row {
+  display: table-row;
+}
+
+.col {
+  display: table-cell;
+}
+
+.badge {
+  background: rgb(165, 209, 91);
+  width: 10px;
+  padding: 0 5px;
+  height: 15px;
+  box-shadow: 0 0 1px #989696;
+  margin-top: 7px;
+}
