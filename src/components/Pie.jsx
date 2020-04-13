@@ -7,7 +7,7 @@ export const Pie = ({ data, assignment, backgroundColor }) => {
         
     const dataset = [];
     const week = data.filter((el) => el.assignment === assignment).map(el => el.week).reduce((a, b) => a > b ? a : b, 0);
-    const projects = data.filter((el) => el.assignment === assignment && el.week === week).map(el => el.project).filter((el, i, a) => a.indexOf(el) === i);
+    const projects = data.filter((el) => el.assignment === assignment && el.week === week).map(el => el.project).filter((el, i, a) => a.indexOf(el) === i).sort((a, b) => (a > b) ? 1 : (b > a) ? -1 : 0 );
     projects.forEach((project, i) => {
         let object = data.filter((el) => el.assignment === assignment && el.week === week && el.project === project);
         let hour = object.map(el => el.hours).reduce((a, b) => a + b, 0);
