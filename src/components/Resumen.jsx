@@ -23,28 +23,32 @@ export const Resumen = ({ data }) => {
     });
 
     return (
-        <div className="content">
+        <>
             {
                 customer.map((item, index) => (
                     <>
+                      <div key={index} className="content">
                         <div className="badge"></div>
-                        <div key={index} className="table">
+                        <div className="table">
                             <div className="theader">
                                 <div className="row">
-                                    <span className="col">{item.customer}</span>
-                                    <span className="col">{item.hours} </span>
+                                    <span className="col key">{item.customer}</span>
+                                    <span className="col value">{item.hours}</span>
+                                    <span className="col value">HH</span>
                                 </div>
                             </div>
-                            {item.items.map((item, index) => (
-                                <div key={index} className="tbody">
-                                    <span className="col">{item.project}</span>
-                                    <span className="col">{item.hour}</span>
+                            {item.items.map((item, i) => (
+                                <div key={i} className="tbody">
+                                    <span className="col key">{item.project}</span>
+                                    <span className="col value">{item.hour}</span>
+                                    <span className="col value">HH</span>
                                 </div>
                             ))}
                         </div>
+                        </div>
                     </>
                 ))}
-        </div>
+        </>
     );
 };
 

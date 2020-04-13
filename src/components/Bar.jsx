@@ -5,11 +5,11 @@ export const Bar = ({ data, assignment, backgroundColor, borderColor }) => {
     const datasets = [];
     const labels = data.filter((el) => el.assignment === assignment).map(el => el.week).filter((el, i, a) => a.indexOf(el) === i);
     labels.forEach((e, i) => {
-        const customer = data.filter((el) => el.assignment === assignment && el.week === e).map(el => el.customer).filter((el, i, a) => a.indexOf(el) === i);
-        customer.forEach((element) => {
+        const customer = data.filter((el) => el.assignment === assignment && el.week === e).map(el => el.customer).filter((el, i, a) => a.indexOf(el) === i).sort((a, b) => (a > b) ? 1 : (b > a) ? -1 : 0 );
+        customer.forEach((element, index) => {
           const hh = [];
           hh.push({ x: e, y: data.filter((el) => el.assignment === assignment && el.week === e && el.customer === element).map(el => el.hours).reduce((a, b) => a + b, 0) });
-          datasets.push({ label: element, data: hh, backgroundColor: backgroundColor.slice(i, i + 1), borderColor: borderColor.slice(i, i + 1), borderWidth: 1 });
+          datasets.push({ label: element, data: hh, backgroundColor: backgroundColor.slice(index, index + 1), borderColor: borderColor.slice(index, index + 1), borderWidth: 1 });
         });
       });
 

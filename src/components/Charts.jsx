@@ -13,7 +13,7 @@ const Charts = () => {
     const borderColor = ['rgba(165, 207, 91)', 'rgba(110, 176, 87)'];
 
     async function fetchData() {
-        const res = await fetch('/api/team/7?week=14');
+        const res = await fetch('/api/team/7?week=14,15');
         res.json()
             .then(res => setRecipes(res.data))
             .catch(err => setErros(err));
@@ -32,7 +32,7 @@ const Charts = () => {
     return (
         <div>
             <select onChange={ (e) => setSelect(e.target.value) } >{assignment} </select>
-            {/* <div>
+            <div className="contenedor">
             <Suspense fallback={ <p> Cargango... </p>}>
                 <Bar 
                 data={recipes}
@@ -41,9 +41,9 @@ const Charts = () => {
                 assignment={select}
                 />
             </Suspense>
-            </div> */}
+            </div>
                 <hr></hr>
-            <div>
+            <div className="contenedor">
                 <Suspense fallback={<p> Cargango... </p>} >
                     <Pie
                         data={recipes}
