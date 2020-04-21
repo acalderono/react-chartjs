@@ -1,32 +1,25 @@
 import React from 'react';
 import './App.css';
+// import './styles/app.css';
 import Charts from './components/Charts';
+// import Slides from './components/Slides';
+
 
 // function App() {
 //   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
+//     <div> <Charts name='angel' / > </div>
 //   );
 // }
 
-function App() {
+const App = () => {
   return (
-    <div> <Charts name='angel' / > </div>
-  );
+    <div>
+      {/* <Slides></Slides> */}
+       <div> 
+         <Charts name='angel' />
+         </div>
+    </div>
+  )
 }
 
 export default App;
