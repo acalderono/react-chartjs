@@ -15,7 +15,6 @@ export const Pie = ({ data, assignment, backgroundColor }) => {
         dataset.push({ customer, project, hour, backgroundColor: backgroundColor.slice(i, i + 1) });
     });
 
-
     const dataPie = {
         labels: dataset.map(p => p.project),
         datasets: [{
@@ -33,11 +32,16 @@ export const Pie = ({ data, assignment, backgroundColor }) => {
     };
 
     return (
-        <div>
-            <PieChart data={dataPie} options={options} />
-            <Resumen data={dataset} />
-        </div>
-    );
+            <div className="flex md:flex-row flex-wrap">
+                <div className="w-full sm:w-1/2 md:w-3/4 p-4 text-center">
+                    <PieChart data={dataPie} options={options} />
+                </div>
+                <div className="w-full sm:w-1/2 md:w-1/4 p-2 bg-gray-200 text-center text-gray-700">
+                      <Resumen data={dataset} ></Resumen>
+                </div>
+
+            </div>
+            );
 
 }
 

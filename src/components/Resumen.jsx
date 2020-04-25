@@ -23,32 +23,25 @@ export const Resumen = ({ data }) => {
     });
 
     return (
-        <>
+        <div className="h-full">
             {
                 customer.map((item, index) => (
-                    <>
-                      <div key={index} className="content">
-                        <div className="badge"></div>
-                        <div className="table">
-                            <div className="theader">
-                                <div className="row">
-                                    <span className="col key">{item.customer}</span>
-                                    <span className="col value">{item.hours}</span>
-                                    <span className="col value">HH</span>
-                                </div>
+                    <div key={index} className="flex-grow text-center my-2 pb-4">
+                        <div className="flex bg-gray-400">
+                            <div className="w-2/4 text-2xl text-left font-bold">{item.customer}</div>
+                            <div className="w-1/4 text-2xl text-right font-bold">{item.hours}</div>
+                            <div className="w-1/4 text-2xl text-right font-bold">HH</div>
+                        </div>
+                        {item.items.map((item, i) => (
+                            <div key={i} className="flex bg-white">
+                                <div className="w-2/4 pt-1 text-lg text-left">{item.project}</div>
+                                <div className="w-1/4 pt-1 text-lg text-right">{item.hour}</div>
+                                <div className="w-1/4 pt-1 text-lg text-right">HH</div>
                             </div>
-                            {item.items.map((item, i) => (
-                                <div key={i} className="tbody">
-                                    <span className="col key">{item.project}</span>
-                                    <span className="col value">{item.hour}</span>
-                                    <span className="col value">HH</span>
-                                </div>
-                            ))}
-                        </div>
-                        </div>
-                    </>
+                        ))}
+                    </div>
                 ))}
-        </>
+        </div>
     );
 };
 
