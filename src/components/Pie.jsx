@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Pie as PieChart } from 'react-chartjs-2';
 import { Resumen } from "./Resumen";
 
 
 export const Pie = ({ data, assignment, backgroundColor }) => {
-        
+
     const dataset = [];
     const week = data.filter((el) => el.assignment === assignment).map(el => el.week).reduce((a, b) => a > b ? a : b, 0);
     const projects = data.filter((el) => el.assignment === assignment && el.week === week).map(el => el.project).filter((el, i, a) => a.indexOf(el) === i).sort((a, b) => (a > b) ? 1 : (b > a) ? -1 : 0 );

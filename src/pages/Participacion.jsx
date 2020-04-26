@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import Pie from './../components/Pie';
 import Select from './../components/comunes/Select';
 import getTasks from './../services/getTasks';
+import Spinner from './../components/comunes/Spinner';
 
-export const ParticipacionFabrica = () => {
+export const Participacion = () => {
 
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(false)
@@ -28,7 +29,8 @@ export const ParticipacionFabrica = () => {
     }
 
     const assignments = recipes.map(el => el.assignment).filter((el, i, a) => a.indexOf(el) === i);
-    return (
+    return (<>{loading ? <Spinner /> : 
+
         <div className="h-full w-auto flex-shrink-0 my-5">
             <div className="flex content-start flex-wrap">
                     <h1 className="text-2xl text-left font-bold py-4 px-4 float-left">Participación Fábrica en {select}</h1>
@@ -39,7 +41,7 @@ export const ParticipacionFabrica = () => {
             </div>
              <Pie data={recipes} backgroundColor={backgroundColor} borderColor={borderColor} assignment={select} />
         </div>
-    )
+ }</>)
 }
 
-export default ParticipacionFabrica;
+export default Participacion;

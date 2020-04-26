@@ -17,4 +17,10 @@ export const Ocupacion = () => {
     )
 }
 
+const Card = () => {
+    return(
+        <h1>Card!</h1>
+    );
+}
+
 export default Ocupacion;
