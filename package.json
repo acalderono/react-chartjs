@@ -16,7 +16,6 @@
     "tailwindcss": "^1.3.4",
     "wouter": "^2.4.0"
   },
-  "proxy": "http://localhost:3200",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

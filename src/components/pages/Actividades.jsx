@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Spinner from '../UI/common/Spinner';
+import Spinner from '../UI/others/Spinner';
 
 export const Actividades = () => {
   const [loading, setLoading] = useState(false);
