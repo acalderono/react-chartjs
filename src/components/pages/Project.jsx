@@ -5,9 +5,8 @@ import { Card } from '../UI/organisms/Card';
 import { useMemo } from 'react';
 
 export const Project = () => {
-  const { response, error, isLoading } = useApi(
-    'https://demo2961273.mockable.io/api'
-  ); // useApi('/api/team/7?week=20,21');
+  // const { response, error, isLoading } = useApi('https://demo2961273.mockable.io/api');
+  const { response, error, isLoading } = useApi('/api/team/7?week=24');
   const [data, setData] = useState([]);
   useMemo(() => {
     setData(response.data);
